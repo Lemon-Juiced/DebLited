@@ -36,11 +36,7 @@ apt-get install chrome-gnome-shell
 # Add new packages
 echo "Installing new packages..."
 flatpak install flathub eu.betterbird.Betterbird -y
-curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave.com/static-assets/brave-browser-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" \
-  > /etc/apt/sources.list.d/brave-browser-release.list
-apt update
-apt install -y brave-browser
+flatpak install flathub com.brave.Browser -y
 apt install -y cmake
 apt install -y fish
 apt install -y gdb
@@ -58,10 +54,13 @@ apt install -y ksnip
 apt install -y neofetch
 apt install -y neovim
 apt install -y unzip
-wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor -o /usr/share/keyrings/vscodium-archive-keyring.gpg
-echo 'deb [signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main' > /etc/apt/sources.list.d/vscodium.list
-apt update
-apt install -y codium
+flatpak install flathub com.vscodium.codium -y
+
+# Customize Brave Browser
+BRAVE_PROFILE_ARCHIVE="$(pwd)/brave-profile.tar.gz"
+cd ~/.var/app/com.brave.Browser/config/BraveSoftware/Brave-Browser/
+rm -rf Default/
+tar xzf "$BRAVE_PROFILE_ARCHIVE"
 
 # Add additional GNOME Extensions
 echo "Installing additional GNOME Extensions system-wide..."
