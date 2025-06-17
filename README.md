@@ -47,7 +47,6 @@ DebLited removes the following packages to streamline the system:
 - `transmission-common`, `transmission-gtk`: BitTorrent client.
 - `xiterm+thai`: Thai terminal emulator.
 
-
 ### Installed Packages
 DebLited installs the following packages to enhance functionality:
 - `betterbird`: An improved version of Thunderbird email client.
@@ -56,10 +55,18 @@ DebLited installs the following packages to enhance functionality:
 - `fish`: A user-friendly shell with advanced features.
 - `flatpak`, `gnome-software-plugin-flatpak`: A system for distributing and running sandboxed desktop applications.
 - `gdb`: A powerful debugger for C and C++.
-- `gnome-extensions`: An extensions platform that allows for other customizations.
+- `geany`: A lightweight IDE.
+- `git`: A powerful VCS tool.
+- `gnome-tweaks`: A tool for customizing GNOME.
+- `gparted`: A partition editor.
 - `htop`: An interactive process viewer for Unix systems.
+- `kdenlive`: A video editing software.
+- `krita`: A digital painting application.
+- `ksnip`: A screenshot tool.
+- `neofetch`: A system information tool.
 - `neovim`: An advanced text editor for developers.
 - `unzip`: A utility for extracting compressed files.
+- `vscodium`: An open-source version of Visual Studio Code.
 
 ### Installed GNOME Tweaks
 DebLited applies the following GNOME tweaks to improve usability:

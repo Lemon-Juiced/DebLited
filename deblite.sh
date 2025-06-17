@@ -22,15 +22,48 @@ apt remove --purge -y transmission-common transmission-gtk
 apt remove --purge -y xiterm+thai
 apt autoremove -y
 
+# Update all packages currently installed
+echo "Updating all currently installed packages..."
+apt update && apt upgrade -y
+
 # Add new packages (Pre-requisites)
 echo "Installing new packages (pre-reqs)..."
 apt install -y flatpak gnome-software-plugin-flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+apt-get install gir1.2-gmenu-3.0
+apt-get install chrome-gnome-shell
 
 # Add new packages
 echo "Installing new packages..."
 flatpak install flathub eu.betterbird.Betterbird -y
 curl -fsS https://dl.brave.com/install.sh | sh 
+apt install -y cmake
+apt install -y fish
+apt install -y gdb
+apt install -y geany
+apt install -y git
+apt install -y gnome-tweaks
+apt install -y gparted
+apt install -y htop
+apt install -y kdenlive
+apt install -y krita
+apt install -y ksnip
+apt install -y neofetch
+apt install -y neovim
+apt install -y unzip
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
+  | gpg --dearmor \
+  | sudo tee /usr/share/keyrings/vscodium-archive-keyring.gpg > /dev/null
+echo 'deb [signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main' \
+  | sudo tee /etc/apt/sources.list.d/vscodium.list
+sudo apt install codium
+
+# Add additional gnome tweaks extensions
+echo "Installing additional GNOME Tweaks extensions..."
+gnome-extensions install https://extensions.gnome.org/extension/1228/arc-menu/
+gnome-extensions install https://extensions.gnome.org/extension/1160/dash-to-panel/
+gnome-extensions install https://extensions.gnome.org/extension/615/appindicator-support/
+gnome-extensions enable
 
 # Restart the system to apply changes
 echo "Installation complete. Would you like to restart your system now to apply the changes?"
