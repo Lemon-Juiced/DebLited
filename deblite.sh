@@ -63,16 +63,10 @@ echo 'deb [signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://d
 apt update
 apt install -y codium
 
-# Add additional gnome tweaks extensions
-echo "Installing additional GNOME Tweaks extensions..."
-if [ ! -f /usr/local/bin/gnome-shell-extension-installer ]; then
-    wget -O /usr/local/bin/gnome-shell-extension-installer https://raw.githubusercontent.com/brunelli/gnome-shell-extension-installer/master/gnome-shell-extension-installer
-    chmod +x /usr/local/bin/gnome-shell-extension-installer
-fi
-gnome-shell-extension-installer 3628 1160 615 --yes
-gnome-extensions enable arcmenu@arcmenu.com
-gnome-extensions enable dash-to-panel@jderose9.github.com
-gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
+# Add additional GNOME Extensions
+echo "Installing additional GNOME Extensions system-wide..."
+sudo apt install gnome-shell-extension-arc-menu gnome-shell-extension-dash-to-panel gnome-shell-extension-appindicator
+gsettings set org.gnome.shell enabled-extensions "['arcmenu@arcmenu.com', 'dash-to-panel@jderose9.github.com', 'appindicatorsupport@rgcjonas.gmail.com']"
 
 # Restart the system to apply changes
 echo "Installation complete. Would you like to restart your system now to apply the changes?"
