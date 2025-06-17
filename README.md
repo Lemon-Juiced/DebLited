@@ -52,16 +52,18 @@ DebLited removes the following packages to streamline the system:
 ### Installed Packages
 DebLited installs the following packages to enhance functionality:
 - `betterbird`: An improved version of Thunderbird email client.
-- `brave`: A privacy-focused web browser.
+- `brave-browser`: A privacy-focused web browser.
 - `cmake`: A cross-platform tool for managing the build process of software.
 - `fish`: A user-friendly shell with advanced features.
 - `flatpak`, `gnome-software-plugin-flatpak`: A system for distributing and running sandboxed desktop applications.
 - `gdb`: A powerful debugger for C and C++.
 - `geany`: A lightweight IDE.
 - `git`: A powerful VCS tool.
+- `gnome-shell-extensions`, `gnome-shell-extension-prefs`: Tools for managing GNOME extensions.
 - `gnome-tweaks`: A tool for customizing GNOME.
 - `gparted`: A partition editor.
 - `htop`: An interactive process viewer for Unix systems.
+- `jq`: A lightweight and flexible command-line JSON processor.
 - `kdenlive`: A video editing software.
 - `krita`: A digital painting application.
 - `ksnip`: A screenshot tool.

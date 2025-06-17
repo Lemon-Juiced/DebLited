@@ -36,33 +36,40 @@ apt-get install chrome-gnome-shell
 # Add new packages
 echo "Installing new packages..."
 flatpak install flathub eu.betterbird.Betterbird -y
-curl -fsS https://dl.brave.com/install.sh | sh 
+curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave.com/static-assets/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" \
+  > /etc/apt/sources.list.d/brave-browser-release.list
+apt update
+apt install -y brave-browser
 apt install -y cmake
 apt install -y fish
 apt install -y gdb
 apt install -y geany
 apt install -y git
+apt install -y gnome-shell-extensions
+apt install -y gnome-shell-extension-prefs
 apt install -y gnome-tweaks
 apt install -y gparted
 apt install -y htop
+apt install -y jq
 apt install -y kdenlive
 apt install -y krita
 apt install -y ksnip
 apt install -y neofetch
 apt install -y neovim
 apt install -y unzip
-wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
-  | gpg --dearmor \
-  | sudo tee /usr/share/keyrings/vscodium-archive-keyring.gpg > /dev/null
-echo 'deb [signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main' \
-  | sudo tee /etc/apt/sources.list.d/vscodium.list
-sudo apt install codium
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor -o /usr/share/keyrings/vscodium-archive-keyring.gpg
+echo 'deb [signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main' > /etc/apt/sources.list.d/vscodium.list
+apt update
+apt install -y codium
 
 # Add additional gnome tweaks extensions
 echo "Installing additional GNOME Tweaks extensions..."
-gnome-extensions install https://extensions.gnome.org/extension/3628/arcmenu/
-gnome-extensions install https://extensions.gnome.org/extension/1160/dash-to-panel/
-gnome-extensions install https://extensions.gnome.org/extension/615/appindicator-support/
+if [ ! -f /usr/local/bin/gnome-shell-extension-installer ]; then
+    wget -O /usr/local/bin/gnome-shell-extension-installer https://raw.githubusercontent.com/brunelli/gnome-shell-extension-installer/master/gnome-shell-extension-installer
+    chmod +x /usr/local/bin/gnome-shell-extension-installer
+fi
+gnome-shell-extension-installer 3628 1160 615 --yes
 gnome-extensions enable arcmenu@arcmenu.com
 gnome-extensions enable dash-to-panel@jderose9.github.com
 gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
