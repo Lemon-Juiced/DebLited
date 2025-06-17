@@ -32,16 +32,18 @@ DebLited removes the following packages to streamline the system:
   - `gnome-nibbles`
   - `gnome-robots`
   - `gnome-sudoku`
+  - `gnome-taquin`
   - `gnome-tetravex`
   - `hitori`
   - `iagno`
   - `lightsoff`
   - `quadrapassel`
+  - `swell-foop`
   - `tali`
 - `goldendict`: A dictionary application.
 - `hdate-applet`, `libhdate1`: Hebrew calendar applet and library.
+- `ibus-mozc`, `mozc-data`, `mozc-server`, `mozc-utils-gui`, `uim-mozc`: Japanese input method packages.
 - `mlterm`, `mlterm-common`: Multilingual terminal emulator.
-- `mozc`, `ibus-mozc`, `mozc-data`, `mozc-utils-gui`, `uim-mozc`: Japanese input method packages.
 - `shotwell`, `shotwell-common`: Photo management application.
 - `thunderbird`: The default email client.
 - `transmission-common`, `transmission-gtk`: BitTorrent client.

@@ -11,11 +11,11 @@ echo "Removing unnecessary packages..."
 
 apt remove --purge -y anthy-common anthy libanthy1 libanthyinput0
 apt remove --purge -y firefox-esr 
-apt remove --purge -y aisleriot five-or-more four-in-a-row gnome-2048 gnome-chess gnome-klotski gnome-mahjongg gnome-mines gnome-nibbles gnome-robots gnome-sudoku gnome-tetravex hitori iagno lightsoff quadrapassel tali
+apt remove --purge -y aisleriot five-or-more four-in-a-row gnome-2048 gnome-chess gnome-klotski gnome-mahjongg gnome-mines gnome-nibbles gnome-robots gnome-sudoku gnome-taquin gnome-tetravex hitori iagno lightsoff quadrapassel swell-foop tali
 apt remove --purge -y goldendict
 apt remove --purge -y hdate-applet libhdate1
+apt remove --purge -y ibus-mozc mozc-data mozc-server mozc-utils-gui uim-mozc
 apt remove --purge -y mlterm mlterm-common
-apt remove --purge -y mozc ibus-mozc mozc-data mozc-utils-gui uim-mozc
 apt remove --purge -y shotwell shotwell-common
 apt remove --purge -y thunderbird
 apt remove --purge -y transmission-common transmission-gtk
@@ -60,10 +60,12 @@ sudo apt install codium
 
 # Add additional gnome tweaks extensions
 echo "Installing additional GNOME Tweaks extensions..."
-gnome-extensions install https://extensions.gnome.org/extension/1228/arc-menu/
+gnome-extensions install https://extensions.gnome.org/extension/3628/arcmenu/
 gnome-extensions install https://extensions.gnome.org/extension/1160/dash-to-panel/
 gnome-extensions install https://extensions.gnome.org/extension/615/appindicator-support/
-gnome-extensions enable
+gnome-extensions enable arcmenu@arcmenu.com
+gnome-extensions enable dash-to-panel@jderose9.github.com
+gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
 
 # Restart the system to apply changes
 echo "Installation complete. Would you like to restart your system now to apply the changes?"
