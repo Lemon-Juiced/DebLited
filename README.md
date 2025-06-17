@@ -72,6 +72,14 @@ DebLited installs the following packages to enhance functionality:
 - `unzip`: A utility for extracting compressed files.
 - `vscodium`: An open-source version of Visual Studio Code.
 
+#### Custom Brave Browser Tweaks
+- **Show Home Button**: Enabled
+- **Show Bookmarks**: Always
+- **Show Brave News Button**: Disabled
+- **Show Brave Wallet Button**: Disabled
+- **Use Wide Address Bar**: Enabled
+- **Always Show Full URLs**: Enabled
+
 ### Installed GNOME Tweaks
 DebLited applies the following GNOME tweaks to improve usability:
 - `arcmenu`: A customizable application menu.
