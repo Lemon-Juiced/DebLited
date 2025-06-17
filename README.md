@@ -85,3 +85,7 @@ DebLited applies the following GNOME tweaks to improve usability:
 - `arcmenu`: A customizable application menu.
 - `dash-to-panel`: Combines the GNOME dash and top panel into a single panel.
 - `gnome-shell-extension-appindicator`: Adds support for application indicators and status notifiers.
+
+### Custom Command Aliases
+- `ll`: Alias for `ls -l`
+- `cls`: Alias for `clear`

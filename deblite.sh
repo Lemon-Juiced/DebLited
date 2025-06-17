@@ -67,6 +67,11 @@ echo "Installing additional GNOME Extensions system-wide..."
 sudo apt install gnome-shell-extension-arc-menu gnome-shell-extension-dash-to-panel gnome-shell-extension-appindicator
 gsettings set org.gnome.shell enabled-extensions "['arcmenu@arcmenu.com', 'dash-to-panel@jderose9.github.com', 'appindicatorsupport@rgcjonas.gmail.com']"
 
+# Add custom 'll' and 'cls' command aliases
+echo "Adding custom command aliases..."
+echo "alias ll='ls -l'" >> /etc/bash.bashrc
+echo "alias cls='clear'" >> /etc/bash.bashrc
+
 # Restart the system to apply changes
 echo "Installation complete. Would you like to restart your system now to apply the changes?"
 read -r -p "Restart now? [Y/n]: " response
