@@ -13,6 +13,13 @@ chmod +x deblite.sh
 ./deblite.sh
 ```
 
+**OR** run like this to log changes:
+
+```bash
+chmod +x deblite.sh
+./deblite.sh > output.log 2>&1
+```
+
 ## Features
 
 ### Removed Packages
