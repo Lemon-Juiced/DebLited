@@ -55,6 +55,7 @@ apt install -y neofetch
 apt install -y neovim
 apt install -y unzip
 flatpak install flathub com.vscodium.codium -y
+apt install -y wget
 
 # Customize Brave Browser
 BRAVE_PROFILE_ARCHIVE="$(pwd)/brave-profile.tar.gz"

@@ -78,6 +78,7 @@ DebLited installs the following packages to enhance functionality:
 - `neovim`: An advanced text editor for developers.
 - `unzip`: A utility for extracting compressed files.
 - `vscodium`: An open-source version of Visual Studio Code.
+- `wget`: A command-line tool to download files from the internet.
 
 #### Custom Brave Browser Tweaks
 - **Show Home Button**: Enabled

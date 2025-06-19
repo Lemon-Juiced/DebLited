@@ -6,6 +6,12 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
+# Check if wget is installed, if not, install it
+if ! command -v wget &> /dev/null; then
+    echo "wget is not installed. Installing wget..."
+    apt update && apt install -y wget
+fi
+
 # wget the `aptb` and `DTar` files
 echo "Downloading aptb and DTar files..."
 # To Do: wget aptb
