@@ -25,6 +25,7 @@ rm DTar.tar.gz
 # Extract DTar.tar.gz and organize contents
 echo "Extracting DTar.tar.gz..."
 tar -xzf DTar.tar.gz
+mkdir -p /usr/local/share/man/man1
 mv linux/man/* /usr/local/share/man/man1/
 mv linux/* /usr/local/bin/
 # Update man database
