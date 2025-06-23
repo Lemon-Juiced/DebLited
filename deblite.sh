@@ -6,6 +6,13 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
+# Check if the -g flag is provided
+$GAMER_INSTALLATION=false
+if [[ "$1" == "-g" ]]; then
+    echo "Running Gamer Installation..."
+    GAMER_INSTALLATION=true
+fi
+
 # Remove unnecessary packages
 echo "Removing unnecessary packages..."
 
@@ -57,6 +64,10 @@ apt install -y neovim
 apt install -y unzip
 flatpak install flathub com.vscodium.codium -y
 apt install -y wget
+if $GAMER_INSTALLATION; then
+    apt install -y discord
+    apt install -y steam
+fi
 
 # Customize Brave Browser
 BRAVE_PROFILE_ARCHIVE="$(pwd)/brave-profile.tar.gz"

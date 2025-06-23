@@ -22,6 +22,11 @@ chmod +x deblite.sh
 ```
 *This option is good to troubleshoot and watch for errors in the build process.*
 
+Additionally, you can run with the `-g` flag to have a "Gamer Install" which installs a few more commonly used "Gamer" programs.
+```bash
+./deblite.sh -g
+```
+
 ## Features
 
 ### Removed Packages
@@ -82,6 +87,10 @@ DebLited installs the following packages to enhance functionality:
 - `unzip`: A utility for extracting compressed files.
 - `vscodium`: An open-source version of Visual Studio Code.
 - `wget`: A command-line tool to download files from the internet.
+
+#### Gamer Installation Additional Packages
+- `discord`: Gamer-focused communication software.
+- `steam`: The largest and most-reputable digital storefront for games.
 
 #### Custom Brave Browser Tweaks
 - **Show Home Button**: Enabled
