@@ -104,12 +104,14 @@ chmod +x /usr/local/share/Lemix/lemix.sh
 /usr/local/share/Lemix/lemix.sh
 
 # Restart the system to apply changes
+echo "If you are logging the installation, ensure you save the log file before restarting your system to apply the changes."
 echo "Installation complete. Would you like to restart your system now to apply the changes?"
 read -r -p "Restart now? [Y/n]: " response
 
 case "$response" in
     [Yy]*)
         echo "Restarting the system..."
+        sync  # Ensure all data is written to disk
         reboot
         ;;
     *)
