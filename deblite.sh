@@ -51,6 +51,7 @@ apt install -y jq
 apt install -y kdenlive
 apt install -y krita
 apt install -y ksnip
+apt install -y make
 apt install -y neofetch
 apt install -y neovim
 apt install -y unzip
@@ -72,6 +73,22 @@ gsettings set org.gnome.shell enabled-extensions "['arcmenu@arcmenu.com', 'dash-
 echo "Adding custom command aliases..."
 echo "alias ll='ls -l'" >> /etc/bash.bashrc
 echo "alias cls='clear'" >> /etc/bash.bashrc
+
+## Set default shell to fish
+echo "Setting fish as the default shell..."
+if ! grep -q "/usr/bin/fish" /etc/shells; then
+    echo "/usr/bin/fish" >> /etc/shells
+fi
+chsh -s /usr/bin/fish
+
+# Create a directory for the Lemix files
+echo "Creating directory for Lemix files..."
+mkdir -p /usr/local/share/Lemix
+# Run the Lemix script
+echo "Running Lemix script..."
+wget -O /usr/local/share/Lemix/lemix.sh https://raw.githubusercontent.com/Lemon-Juiced/Lemix/main/lemix.sh
+chmod +x /usr/local/share/Lemix/lemix.sh
+/usr/local/share/Lemix/lemix.sh
 
 # Restart the system to apply changes
 echo "Installation complete. Would you like to restart your system now to apply the changes?"

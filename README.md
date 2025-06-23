@@ -1,5 +1,5 @@
 # DebLited
-DebLited is a script designed to transform a basic installation of Debian 12.11.0 with the GNOME Desktop Environment into a customized build of LemOS. It simplifies the setup process by automating package installation, removal, and GNOME tweaks.
+DebLited, a play on de-blight, is a script designed to transform a basic installation of Debian 12.11.0 with the GNOME Desktop Environment into a customized build of LemOS. It simplifies the setup process by automating package installation, removal, and GNOME tweaks.
 
 ## Usage
 To use DebLited, follow these steps:
@@ -12,6 +12,7 @@ Ensure you have execution permissions for the script:
 chmod +x deblite.sh
 ./deblite.sh
 ```
+**We recommend this option if you want to see output and make sure changes are being made.**
 
 **OR** run like this to log changes:
 
@@ -19,6 +20,7 @@ chmod +x deblite.sh
 chmod +x deblite.sh
 ./deblite.sh > output.log 2>&1
 ```
+*This option is good to troubleshoot and watch for errors in the build process.*
 
 ## Features
 
@@ -74,6 +76,7 @@ DebLited installs the following packages to enhance functionality:
 - `kdenlive`: A video editing software.
 - `krita`: A digital painting application.
 - `ksnip`: A screenshot tool.
+- `make`: A tool for executing build instructions.
 - `neofetch`: A system information tool.
 - `neovim`: An advanced text editor for developers.
 - `unzip`: A utility for extracting compressed files.
@@ -87,6 +90,7 @@ DebLited installs the following packages to enhance functionality:
 - **Show Brave Wallet Button**: Disabled
 - **Use Wide Address Bar**: Enabled
 - **Always Show Full URLs**: Enabled
+*The current installation method for this can probably be slimmed, uses the whole brave-profile.tar.gz file.*
 
 ### Installed GNOME Tweaks
 DebLited applies the following GNOME tweaks to improve usability:
@@ -97,3 +101,21 @@ DebLited applies the following GNOME tweaks to improve usability:
 ### Custom Command Aliases
 - `ll`: Alias for `ls -l`
 - `cls`: Alias for `clear`
+
+### Default Shell
+Fish is the default shell for this OS.
+
+### Custom Programs
+LemOS has custom programs built specifically for this OS, for various reaons:
+1. Programs that better follow the Unix philosophy.
+2. Programs that would easier to condense into a single command than an alias.
+
+#### Custom Programs Added
+- To Add: `aptb`
+- `DTar` (To Do: Add Link)
+
+### To Do:
+- Customized OS Flags, decouple from Debian
+- Custom Theme
+- Reorganize the Taskbar (Add and Remove Programs)
+- Set Default Browser To Brave

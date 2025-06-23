@@ -14,7 +14,7 @@ fi
 
 # wget the `aptb` and `DTar` files
 echo "Downloading aptb and DTar files..."
-# To Do: wget aptb
+# To Do: wget aptb - Needs releases
 wget https://github.com/Lemon-Juiced/DTar/releases/download/v0.0.3/DTar.tar.gz
 
 # Unzip the DTar file
