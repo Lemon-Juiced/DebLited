@@ -7,7 +7,7 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 # Check if the -g flag is provided
-$GAMER_INSTALLATION=false
+GAMER_INSTALLATION=false
 if [[ "$1" == "-g" ]]; then
     echo "Running Gamer Installation..."
     GAMER_INSTALLATION=true
@@ -64,7 +64,7 @@ apt install -y neovim
 apt install -y unzip
 flatpak install flathub com.vscodium.codium -y
 apt install -y wget
-if $GAMER_INSTALLATION; then
+if [ "$GAMER_INSTALLATION" = true ]; then
     apt install -y discord
     apt install -y steam
 fi
@@ -85,12 +85,14 @@ echo "Adding custom command aliases..."
 echo "alias ll='ls -l'" >> /etc/bash.bashrc
 echo "alias cls='clear'" >> /etc/bash.bashrc
 
-## Set default shell to fish
-echo "Setting fish as the default shell..."
+## Set default shell to fish for all users
+echo "Setting fish as the default shell for all users..."
 if ! grep -q "/usr/bin/fish" /etc/shells; then
     echo "/usr/bin/fish" >> /etc/shells
 fi
-chsh -s /usr/bin/fish
+for user in $(cut -d: -f1 /etc/passwd); do
+    chsh -s /usr/bin/fish "$user"
+done
 
 # Create a directory for the Lemix files
 echo "Creating directory for Lemix files..."
