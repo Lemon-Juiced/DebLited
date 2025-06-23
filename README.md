@@ -126,5 +126,6 @@ LemOS has custom programs built specifically for this OS, for various reaons:
 ### To Do:
 - Customized OS Flags, decouple from Debian
 - Custom Theme
+- Make idle time before system goes to sleep much longer
 - Reorganize the Taskbar (Add and Remove Programs)
 - Set Default Browser To Brave
