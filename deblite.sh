@@ -9,4 +9,4 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 chmod +x 00_deblite_preprocess.sh
-./00_deblite_preprocess.sh
+bash 00_deblite_preprocess.sh

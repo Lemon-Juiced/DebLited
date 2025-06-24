@@ -18,7 +18,7 @@ apt update && apt upgrade -y
 read -p "Do you want to run the deblite installation script now? (y/n): " run_installation
 if [[ "$run_installation" =~ ^[Yy]$ ]]; then
     echo "Running deblite installation script..."
-    ./02_deblite_install.sh
+    bash 02_deblite_install.sh
 else
     echo "Skipping deblite installation script."
 fi

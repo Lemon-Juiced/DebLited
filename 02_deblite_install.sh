@@ -11,7 +11,7 @@ read -p "Do you want to install gamer packages? (y/n): " gamer_installation
 if [[ "$gamer_installation" =~ ^[Yy]$ ]]; then
     # We will run this script separately because we might want to add more gamer packages in updates
     echo "Running deblite gamer installation script..."
-    ./03_deblite_gamer_install.sh
+    bash 03_deblite_gamer_install.sh
 else
     echo "Skipping gamer installation script."
 fi
@@ -20,7 +20,7 @@ fi
 read -p "Do you want to run the deblite customization script now? (y/n): " run_customization
 if [[ "$run_customization" =~ ^[Yy]$ ]]; then
     echo "Running deblite customization script..."
-    ./04_deblite_customize.sh
+    bash 04_deblite_customize.sh
 else
     echo "Skipping deblite customization script."
 fi

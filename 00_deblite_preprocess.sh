@@ -36,7 +36,7 @@ apt-get install chrome-gnome-shell
 read -p "Do you want to run the deblite installation script now? (y/n): " run_installation
 if [[ "$run_installation" =~ ^[Yy]$ ]]; then
     echo "Running deblite installation script..."
-    ./01_deblite_uninstall.sh
+    bash 01_deblite_uninstall.sh
 else
     echo "Skipping deblite debloat script."
 fi

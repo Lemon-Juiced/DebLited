@@ -26,7 +26,7 @@ done
 read -p "Do you want to run the deblite lemix script now? (y/n): " run_lemix
 if [[ "$run_lemix" =~ ^[Yy]$ ]]; then
     echo "Running deblite lemix script..."
-    ./05_deblite_customize.sh
+    bash /05_deblite_customize.sh
 else
     echo "Skipping deblite lemix script."
 fi

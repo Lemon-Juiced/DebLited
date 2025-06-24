@@ -28,7 +28,7 @@ chmod +x /usr/local/bin/*
 read -p "Do you want to run the deblite finalize script now? (y/n): " run_finalize
 if [[ "$run_finalize" =~ ^[Yy]$ ]]; then
     echo "Running deblite finalize script..."
-    ./06_deblite_finalize.sh
+    bash 06_deblite_finalize.sh
 else
     echo "Skipping deblite finalize script."
 fi
