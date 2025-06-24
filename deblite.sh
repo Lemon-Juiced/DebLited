@@ -1,116 +1,12 @@
-#!/bin/bash
+#!bin/bash
 
-# Elevate privileges if not already running as root
+## This file is an artifact of the original build script, it does not need to be run, but it sure doesn't hurt.
+
+# Makes sure the script is run as root
 if [ "$(id -u)" -ne 0 ]; then
     echo "This script requires root privileges. Please run it with sudo."
     exit 1
 fi
 
-# Check if the -g flag is provided
-GAMER_INSTALLATION=false
-if [[ "$1" == "-g" ]]; then
-    echo "Running Gamer Installation..."
-    GAMER_INSTALLATION=true
-fi
-
-# Remove unnecessary packages
-echo "Removing unnecessary packages..."
-
-apt remove --purge -y anthy-common anthy libanthy1 libanthyinput0
-apt remove --purge -y firefox-esr 
-apt remove --purge -y aisleriot five-or-more four-in-a-row gnome-2048 gnome-chess gnome-klotski gnome-mahjongg gnome-mines gnome-nibbles gnome-robots gnome-sudoku gnome-taquin gnome-tetravex hitori iagno lightsoff quadrapassel swell-foop tali
-apt remove --purge -y goldendict
-apt remove --purge -y hdate-applet libhdate1
-apt remove --purge -y ibus-mozc mozc-data mozc-server mozc-utils-gui uim-mozc
-apt remove --purge -y mlterm mlterm-common
-apt remove --purge -y shotwell shotwell-common
-apt remove --purge -y thunderbird
-apt remove --purge -y transmission-common transmission-gtk
-apt remove --purge -y xiterm+thai
-apt autoremove -y
-
-# Update all packages currently installed
-echo "Updating all currently installed packages..."
-apt update && apt upgrade -y
-
-# Add new packages (Pre-requisites)
-echo "Installing new packages (pre-reqs)..."
-apt install -y flatpak gnome-software-plugin-flatpak
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-apt-get install gir1.2-gmenu-3.0
-apt-get install chrome-gnome-shell
-
-# Add new packages
-echo "Installing new packages..."
-flatpak install flathub eu.betterbird.Betterbird -y
-flatpak install flathub com.brave.Browser -y
-apt install -y cmake
-apt install -y fish
-apt install -y gdb
-apt install -y geany
-apt install -y git
-apt install -y gnome-shell-extensions
-apt install -y gnome-shell-extension-prefs
-apt install -y gnome-tweaks
-apt install -y gparted
-apt install -y htop
-apt install -y jq
-apt install -y kdenlive
-apt install -y krita
-apt install -y ksnip
-apt install -y make
-apt install -y neofetch
-apt install -y neovim
-apt install -y unzip
-flatpak install flathub com.vscodium.codium -y
-apt install -y wget
-if [ "$GAMER_INSTALLATION" = true ]; then
-    apt install -y discord
-    apt install -y steam
-fi
-
-# Customize Brave Browser
-BRAVE_PROFILE_ARCHIVE="$(pwd)/brave-profile.tar.gz"
-cd ~/.var/app/com.brave.Browser/config/BraveSoftware/Brave-Browser/
-rm -rf Default/
-tar xzf "$BRAVE_PROFILE_ARCHIVE"
-
-# Add additional GNOME Extensions
-echo "Installing additional GNOME Extensions system-wide..."
-sudo apt install gnome-shell-extension-arc-menu gnome-shell-extension-dash-to-panel gnome-shell-extension-appindicator
-gsettings set org.gnome.shell enabled-extensions "['arcmenu@arcmenu.com', 'dash-to-panel@jderose9.github.com', 'appindicatorsupport@rgcjonas.gmail.com']"
-
-# Add custom 'll' and 'cls' command aliases
-echo "Adding custom command aliases..."
-echo "alias ll='ls -l'" >> /etc/bash.bashrc
-echo "alias cls='clear'" >> /etc/bash.bashrc
-
-## Set default shell to fish for all users
-echo "Setting fish as the default shell for all users..."
-if ! grep -q "/usr/bin/fish" /etc/shells; then
-    echo "/usr/bin/fish" >> /etc/shells
-fi
-for user in $(cut -d: -f1 /etc/passwd); do
-    chsh -s /usr/bin/fish "$user"
-done
-
-# Run the Lemix script
-echo "Running Lemix script..."
-chmod +x lemix.sh
-/lemix.sh
-
-# Restart the system to apply changes
-echo "If you are logging the installation, ensure you save the log file before restarting your system to apply the changes."
-echo "Installation complete. Would you like to restart your system now to apply the changes?"
-read -r -p "Restart now? [Y/n]: " response
-
-case "$response" in
-    [Yy]*)
-        echo "Restarting the system..."
-        sync  # Ensure all data is written to disk
-        reboot
-        ;;
-    *)
-        echo "You can restart your system later to apply the changes."
-        ;;
-esac
+chmod +x 00_deblite_preprocess.sh
+./00_deblite_preprocess.sh

@@ -12,56 +12,61 @@ Ensure you have execution permissions for the script:
 chmod +x deblite.sh
 ./deblite.sh
 ```
-**We recommend this option if you want to see output and make sure changes are being made.**
-
-**OR** run like this to log changes:
-
-```bash
-chmod +x deblite.sh
-./deblite.sh > output.log 2>&1
-```
-*This option is good to troubleshoot and watch for errors in the build process.*
 
 Additionally, you can run with the `-g` flag to have a "Gamer Install" which installs a few more commonly used "Gamer" programs.
 ```bash
+chmod +x deblite.sh
 ./deblite.sh -g
 ```
+
+## Project Organization
+DebLited is now segmented into multiple scripts for better modularity and maintainability:
+
+### Scripts
+1. **`deblite.sh`**: 
+   - Optional entry into the program, artifact from the original build script.
+   - Extra protection to make sure user is running as sudo, and runs `00_deblite_preprocess.sh`.
+
+2. **`00_deblite_preprocess.sh`**:
+   - Prepares the system by installing required tools and setting up repositories.
+   - Makes all other scripts executable.
+
+3. **`01_deblite_uninstall.sh`**:
+   - Removes unnecessary packages to streamline the system.
+   - Updates all currently installed packages.
+
+4. **`02_deblite_install.sh`**:
+   - Installs essential packages and tools.
+   - Prompts the user to install gamer packages.
+
+5. **`03_deblite_gamer_install.sh`**:
+   - Installs gamer-specific packages like Discord and Steam.
+
+6. **`04_deblite_customize.sh`**:
+   - Customizes the system with GNOME extensions, aliases, and sets the default shell to fish.
+
+7. **`05_deblite_lemix.sh`**:
+   - Downloads and installs DTar files.
+   - Updates the man database.
+
+8. **`06_deblite_finalize.sh`**:
+   - Finalizes the installation and reboots the system.
 
 ## Features
 
 ### Removed Packages
 DebLited removes the following packages to streamline the system:
 
-- `anthy-common`, `anthy`, `libanthy1`, `libanthyinput0`: Japanese input method packages.
-- `firefox-esr`: The extended support release of Firefox.
-- **Gnome Games**: A collection of pre-installed games including:
-  - `aisleriot`
-  - `five-or-more`
-  - `four-in-a-row`
-  - `gnome-2048`
-  - `gnome-chess`
-  - `gnome-klotski`
-  - `gnome-mahjongg`
-  - `gnome-mines`
-  - `gnome-nibbles`
-  - `gnome-robots`
-  - `gnome-sudoku`
-  - `gnome-taquin`
-  - `gnome-tetravex`
-  - `hitori`
-  - `iagno`
-  - `lightsoff`
-  - `quadrapassel`
-  - `swell-foop`
-  - `tali`
-- `goldendict`: A dictionary application.
-- `hdate-applet`, `libhdate1`: Hebrew calendar applet and library.
-- `ibus-mozc`, `mozc-data`, `mozc-server`, `mozc-utils-gui`, `uim-mozc`: Japanese input method packages.
-- `mlterm`, `mlterm-common`: Multilingual terminal emulator.
-- `shotwell`, `shotwell-common`: Photo management application.
-- `thunderbird`: The default email client.
-- `transmission-common`, `transmission-gtk`: BitTorrent client.
-- `xiterm+thai`: Thai terminal emulator.
+- **Japanese Input Method Packages**: `anthy-common`, `anthy`, `libanthy1`, `libanthyinput0`, `ibus-mozc`, `mozc-data`, `mozc-server`, `mozc-utils-gui`, `uim-mozc`.
+- **Firefox ESR**: The extended support release of Firefox.
+- **Gnome Games**: Pre-installed games including `aisleriot`, `five-or-more`, `four-in-a-row`, `gnome-2048`, `gnome-chess`, `gnome-klotski`, `gnome-mahjongg`, `gnome-mines`, `gnome-nibbles`, `gnome-robots`, `gnome-sudoku`, `gnome-taquin`, `gnome-tetravex`, `hitori`, `iagno`, `lightsoff`, `quadrapassel`, `swell-foop`, `tali`.
+- **Goldendict**: A dictionary application.
+- **Hebrew Calendar Applet and Library**: `hdate-applet`, `libhdate1`.
+- **Multilingual Terminal Emulator**: `mlterm`, `mlterm-common`.
+- **Photo Management Application**: `shotwell`, `shotwell-common`.
+- **Default Email Client**: `thunderbird`.
+- **BitTorrent Client**: `transmission-common`, `transmission-gtk`.
+- **Thai Terminal Emulator**: `xiterm+thai`.
 
 ### Installed Packages
 DebLited installs the following packages to enhance functionality:
@@ -88,20 +93,21 @@ DebLited installs the following packages to enhance functionality:
 - `vscodium`: An open-source version of Visual Studio Code.
 - `wget`: A command-line tool to download files from the internet.
 
+*... and their dependencies.*
+
 #### Gamer Installation Additional Packages
 - `discord`: Gamer-focused communication software.
 - `steam`: The largest and most-reputable digital storefront for games.
 
-#### Custom Brave Browser Tweaks
+#### Custom Brave Browser Tweaks (To Do)
 - **Show Home Button**: Enabled
 - **Show Bookmarks**: Always
 - **Show Brave News Button**: Disabled
 - **Show Brave Wallet Button**: Disabled
 - **Use Wide Address Bar**: Enabled
 - **Always Show Full URLs**: Enabled
-*The current installation method for this can probably be slimmed, uses the whole brave-profile.tar.gz file.*
 
-### Installed GNOME Tweaks
+### Installed GNOME Tweaks (Needs Work)
 DebLited applies the following GNOME tweaks to improve usability:
 - `arcmenu`: A customizable application menu.
 - `dash-to-panel`: Combines the GNOME dash and top panel into a single panel.
@@ -112,7 +118,7 @@ DebLited applies the following GNOME tweaks to improve usability:
 - `cls`: Alias for `clear`
 
 ### Default Shell
-Fish is the default shell for this OS.
+The default shell for all users is changed to `fish`.
 
 ### Custom Programs
 LemOS has custom programs built specifically for this OS, for various reaons:
