@@ -94,14 +94,10 @@ for user in $(cut -d: -f1 /etc/passwd); do
     chsh -s /usr/bin/fish "$user"
 done
 
-# Create a directory for the Lemix files
-echo "Creating directory for Lemix files..."
-mkdir -p /usr/local/share/Lemix
 # Run the Lemix script
 echo "Running Lemix script..."
-wget -O /usr/local/share/Lemix/lemix.sh https://raw.githubusercontent.com/Lemon-Juiced/Lemix/main/lemix.sh
-chmod +x /usr/local/share/Lemix/lemix.sh
-/usr/local/share/Lemix/lemix.sh
+chmod +x lemix.sh
+/lemix.sh
 
 # Restart the system to apply changes
 echo "If you are logging the installation, ensure you save the log file before restarting your system to apply the changes."
